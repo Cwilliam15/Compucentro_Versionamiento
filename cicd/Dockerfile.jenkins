@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y \
     unzip \
     nodejs \
     npm \
-    openjdk-17-jre \
+    openjdk-17-jre-headless \
     git \
     docker.io \
     && rm -rf /var/lib/apt/lists/*

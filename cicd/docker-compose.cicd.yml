@@ -3,7 +3,7 @@ version: '3.8'
 services:
   jenkins:
     build:
-      context: ./cicd                # 🔹 Carpeta donde está el Dockerfile.jenkins
+      context: .                # 🔹 Carpeta donde está el Dockerfile.jenkins
       dockerfile: Dockerfile.jenkins # 🔹 Nombre del archivo
     container_name: jenkins
     user: root

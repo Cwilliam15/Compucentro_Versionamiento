@@ -2,12 +2,12 @@ pipeline {
     agent any
 
     environment {
-        // Variables del entorno
+        // ⚙️ Variables globales
         DOCKER_COMPOSE_FILE = "docker-compose.yml"
         PROJECT_DIR = "www/CompuCentro_Coban"
-        SONARQUBE_SERVER = "SonarQubeServer" // nombre que registrarás en Jenkins
-        SONARQUBE_PROJECT_KEY = "compucentro"
-        SONARQUBE_LOGIN = "tu_token_de_sonarqube"
+        SONARQUBE_SERVER = "SonarQubeServer"       // Nombre registrado en Jenkins (Manage Jenkins > Configure System)
+        SONARQUBE_PROJECT_KEY = "compucentro"      // Debe coincidir con el ID del proyecto en SonarQube
+        SONARQUBE_LOGIN = "tu_token_de_sonarqube"  // Token generado desde SonarQube
     }
 
     stages {
@@ -15,7 +15,9 @@ pipeline {
         stage('Clonar Repositorio') {
             steps {
                 echo "📦 Clonando el repositorio de GitHub..."
-                git branch: 'main', url: 'https://github.com/TU_USUARIO/TU_REPO.git'
+                git branch: 'main',
+                    credentialsId: 'github-token', // ID del token agregado en Jenkins Credentials
+                    url: 'https://github.com/SelenaAM505/Compucentro_Versionamiento.git'
             }
         }
 
@@ -27,7 +29,7 @@ pipeline {
                         sonar-scanner \
                             -Dsonar.projectKey=${SONARQUBE_PROJECT_KEY} \
                             -Dsonar.sources=${PROJECT_DIR} \
-                            -Dsonar.host.url=http://sonarqube:9000 \
+                            -Dsonar.host.url=http://localhost:9000 \
                             -Dsonar.login=${SONARQUBE_LOGIN}
                     '''
                 }
@@ -37,6 +39,7 @@ pipeline {
         stage('Esperar Resultado de Análisis') {
             steps {
                 script {
+                    echo "⏳ Esperando resultados de calidad de SonarQube..."
                     timeout(time: 2, unit: 'MINUTES') {
                         waitForQualityGate abortPipeline: true
                     }
@@ -55,7 +58,14 @@ pipeline {
         stage('Verificar Despliegue') {
             steps {
                 echo "✅ Verificando que el sitio esté en línea..."
-                sh "curl -f http://localhost:8081 || echo '❌ Error al verificar el despliegue'"
+                sh '''
+                    if curl -f http://localhost:8081 > /dev/null 2>&1; then
+                        echo "🌐 Sitio operativo correctamente."
+                    else
+                        echo "❌ Error al verificar el despliegue"
+                        exit 1
+                    fi
+                '''
             }
         }
     }

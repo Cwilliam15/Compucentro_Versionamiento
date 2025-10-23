@@ -2,7 +2,9 @@ version: '3.8'
 
 services:
   jenkins:
-    image: jenkins/jenkins:lts
+    build:
+      context: ./cicd                # 🔹 Carpeta donde está el Dockerfile.jenkins
+      dockerfile: Dockerfile.jenkins # 🔹 Nombre del archivo
     container_name: jenkins
     user: root
     ports:
@@ -13,7 +15,6 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
       - cicd_net
-      - default   # ✅ Esta línea permite que Jenkins salga a internet (GitHub, SonarQube, etc.)
 
   sonarqube:
     image: sonarqube:latest
@@ -28,7 +29,6 @@ services:
       - sonarqube_extensions:/opt/sonarqube/extensions
     networks:
       - cicd_net
-      - default   # ✅ Opcional pero recomendado (permite comunicación si Jenkins o tu PC usan red externa)
 
 volumes:
   jenkins_home:
@@ -39,5 +39,3 @@ volumes:
 networks:
   cicd_net:
     driver: bridge
-  default:
-    external: false

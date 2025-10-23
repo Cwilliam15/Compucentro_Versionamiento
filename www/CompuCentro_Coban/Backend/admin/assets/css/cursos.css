@@ -1,0 +1,100 @@
+/* Estilos para el contenedor principal del administrador de cursos */
+/* Contenedor centrado con sombra y bordes redondeados */
+.container-admin {
+  max-width: 900px;
+  width: 90%;
+  margin: 40px auto;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  overflow: visible; /* permite que se muestre todo el contenido */
+  height: auto;      /* se adapta a la cantidad de campos */
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 1200px) {
+  .container-admin {
+    max-width: 95%;
+    margin: 20px auto;
+  }
+}
+/* Título del administrador de cursos */
+.titulo-admin {
+  color: #083B70;
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 20px;/* Espaciado inferior */
+}
+/* Estilos para el formulario de cursos */
+.form-curso {
+  display: flex;/* Usar flexbox para el formulario */
+  flex-direction: column;/* Dirección de columna */
+  gap: 10px;/* Espaciado entre campos */
+}
+/* Estilos para cada campo del formulario */
+.form-curso .campo label {
+  font-weight: bold;/* Negrita para etiquetas */
+  color: #333;
+}
+/* Estilos para los inputs, textarea y select */
+.form-curso input,
+.form-curso textarea,
+.form-curso select {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 8px;
+  width: 100%;/* Ancho completo */
+}
+/* Estilos para el botón de guardar */
+.btn-guardar {
+  background-color: #083B70;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+/* Efecto hover para el botón */
+.btn-guardar:hover {
+  background-color: #ff6a03;
+}
+.division {/* Línea divisoria */
+  margin: 30px 0;
+}
+/* Estilos para la tabla de cursos */
+.tabla-cursos table {
+  max-width: 900px;
+  width: 90%;
+  margin: 40px auto;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  overflow: visible; /* permite que se muestre todo el contenido */
+  height: auto;      /* se adapta a la cantidad de campos */
+}
+
+.subtitulo{
+  color: #083B70;
+  font-size: 1.6rem;
+  text-align: center;
+  margin-bottom: 20px;/* Espaciado inferior */
+}
+
+/* Estilos para los encabezados de la tabla */
+.tabla-cursos th {
+  background: #083B70;
+  color: white;
+  padding: 10px;/* Espaciado */
+}
+
+.tabla-cursos td {
+  border-bottom: 1px solid #ddd;
+  padding: 20px;/* Espaciado */
+}
+
+.tabla-cursos tr:hover {
+  background-color: #f2f6ff;
+}

@@ -1,0 +1,279 @@
+/* --- Reset y fuentes --- */
+* {
+  margin: 0; /* Elimina márgenes predeterminados */
+  padding: 0; /* Elimina rellenos predeterminados */
+  box-sizing: border-box; /* Incluye padding y border en el tamaño total del elemento */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente moderna y legible */
+}
+
+/* --- Cuerpo del sitio --- */
+body {
+  background: linear-gradient(135deg, #75a1d8, #cdd4dc, #1e5fa5);
+  color: #222;
+  line-height: 1.6;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+body.loaded {
+  opacity: 1;
+}
+
+/* --- Sección de cursos --- */
+.cursos {
+  padding: 50px 8%;
+  text-align: center;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.1);
+  border-radius: 16px;
+  backdrop-filter: blur(4px);
+}
+
+/* --- Estilo y animación del título principal --- */
+.titulo {
+  font-size: 2.6rem;/* tamaño grande para destacar */
+  color: #083B70; /* Azul institucional */
+  margin-top: 30px;/* espacio encima del título */
+  margin-bottom: 10px;/* espacio debajo del título */
+  text-shadow: 2px 2px 6px rgba(8, 58, 112, 0.75);
+  position: relative;/* para la línea decorativa */
+  display: inline-block;/* para posicionar la línea decorativa */
+  
+  /* Animación de entrada */
+  opacity: 0;/* empieza invisible */
+  transform: translateY(25px);/* empieza un poco abajo */
+  animation: aparecerTitulo 1.2s ease forwards;/* animación definida abajo */
+}
+
+/* Línea decorativa azul-naranja bajo el título */
+.titulo::after {
+  content: "";/* contenido vacío */
+  position: absolute;/* posición absoluta respecto al título */
+  bottom: -10px;/* espacio debajo del título */
+  left: 50%;/* centrado horizontal */
+  transform: translateX(-50%);/* ajustar posición */
+  width: 0;/* inicia en 0 para animación */
+  height: 3px;/* grosor de la línea */
+  background: linear-gradient(90deg, #FF6A03, #083B70);/* degradado naranja-azul */
+  border-radius: 3px;/* bordes redondeados */
+  animation: lineaTitulo 1.2s ease forwards 0.8s; /* aparece después del título */
+}
+
+/* Animaciones clave */
+@keyframes aparecerTitulo {
+  0% {
+    opacity: 0;/* empieza invisible */
+    transform: translateY(25px);/* empieza un poco abajo */
+  }
+  100% {
+    opacity: 1;/* termina visible */
+    transform: translateY(0);/* termina en posición normal */
+  }
+}
+
+@keyframes lineaTitulo {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 60%;/* línea alcanza el 60% del ancho del título */
+  }
+}
+
+/*Subtítulo elegante debajo*/
+.subtitulo {
+  font-size: 1.2rem;
+  color: #222;
+  opacity: 0;
+  transform: translateY(15px);
+  animation: aparecerSubtitulo 1s ease forwards 1.4s;
+  margin-bottom: 30px;
+   margin-top: 10px;
+}
+
+@keyframes aparecerSubtitulo {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Subtítulo interno (TAC) */
+.subtitulo-curso {
+  display: block;
+  margin: 8px 0 14px 0; /* espacio balanceado arriba y abajo */
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #eb7a08;
+  line-height: 1.5;
+  letter-spacing: 0.3px;
+  text-align: justify; /* si querés cumplir con el pedido textual */
+  text-indent: 0; /* evita que empiece con sangría */
+}
+
+/*Contenedor de tarjetas*/
+.contenedor-cursos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 25px;
+}
+
+/*Tarjetas individuales*/
+.curso-card {
+  background: #f0f2f5cc;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  transition: all 0.4s ease;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: aparecer 0.8s ease forwards;
+  width: 100%;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-top: 4px solid #ff7b00;
+  padding-bottom: 20px; /* mejora equilibrio visual */
+}
+
+/*alternar el color del borde superior entre azul y naranja para cada tarjeta */
+.curso-card:nth-child(even) {
+  border-top: 4px solid #083B70; /* azul institucional */
+}
+
+/*Añadí consistencia a los retrasos de animación */
+.curso-card:nth-child(1) { animation-delay: 0.2s; }/* primera tarjeta aparece primero */
+.curso-card:nth-child(2) { animation-delay: 0.4s; }/* segunda tarjeta aparece después */
+.curso-card:nth-child(3) { animation-delay: 0.6s; }/* tercera tarjeta aparece después */
+.curso-card:nth-child(4) { animation-delay: 0.8s; }/* cuarta tarjeta aparece después */
+.curso-card:nth-child(5) { animation-delay: 1s; }/* quinta tarjeta aparece después */
+
+@keyframes aparecer {
+  0% { opacity: 0; transform: translateY(50px) scale(0.98); }/* inicio ligeramente más abajo y más pequeño */
+  100% { opacity: 1; transform: translateY(0) scale(1); }/* final en posición normal y tamaño completo */
+}
+
+/* sombra y transición */
+.curso-card:hover {
+  box-shadow: 0 12px 25px rgba(8, 59, 112, 0.25);
+  transform: translateY(-8px);
+  transition: all 0.4s ease;
+}
+.curso-card:hover {
+  box-shadow: 0 12px 25px rgba(8, 59, 112, 0.25), 0 0 18px rgba(255, 123, 0, 0.3);
+  transform: translateY(-6px);
+  background: rgba(240, 242, 245, 0.9);
+  transition: all 0.4s ease;
+}
+
+/* Imagen del curso */
+.curso-img {
+  width: 100%;/* Ancho completo */
+  height: 190px;/* Altura fija */
+  object-fit: cover;/* Cubre el área sin distorsionar */
+}
+
+/* Contenido del curso */
+.curso-info {/* Contenedor de información */
+  padding: 22px;
+  text-align: left;
+}
+.curso-info h3 {
+  color: #062e5a;/* Azul institucional */
+  font-size: 1.4rem;/* Tamaño destacado */
+  margin-bottom: 8px;/* Espacio debajo del título */
+  position: relative;
+  display: inline-block;
+}
+.curso-info h3::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background-color: #ff7b00;
+  transition: width 0.3s ease;
+}
+.curso-info h3:hover::after {
+  width: 100%;
+}
+
+/* Párrafos */
+.curso-info p {
+  font-size: 1.1rem;/* Tamaño legible */
+  color: #000;/* Color legible */
+  margin-bottom: 18px;/* Espacio debajo del párrafo */
+  line-height: 1.65;/* Mejor legibilidad */
+  text-align: justify;
+}
+
+/*Detalles de duración, modalidad, etc.*/
+.detalles {
+  font-size: 0.9rem;
+  color: #000;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  grid-template-columns: 110px 1fr;
+  gap: 2px;
+}
+/* Resaltar etiquetas */
+.detalles strong {
+  color: #083B70;
+}
+/* Cada detalle en su propia línea */
+.detalles span {
+  display: block;
+}
+
+/* --- Botón --- */
+.boton {
+  display: block;
+  width: fit-content;
+  margin: 10px auto 0 auto;
+  padding: 10px 20px;
+  background: linear-gradient(90deg, #ff7b00, #ffae42);
+  color: #fff;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.boton:hover {
+  background: linear-gradient(90deg, #ffae42, #ff7b00);
+  transform: scale(1.05);
+  box-shadow: 0 4px 16px rgba(255, 123, 0, 0.6);
+  text-decoration: none;
+}
+/* si preciona tab dentro de cursos este pasa por los botones y se ve */
+.boton:focus {
+  outline: 2px solid #ff7b00;
+  outline-offset: 3px;
+}
+
+/* --- Responsivo (tablets y móviles) --- */
+@media (max-width: 768px) {
+  .contenedor-cursos {
+    grid-template-columns: 1fr;
+    padding: 0 8px;
+  }
+
+  .curso-card {
+    margin-bottom: 25px;
+  }
+
+  .curso-img {
+    height: 200px;
+  }
+
+  .titulo {
+    font-size: 2rem;
+    margin-top: 50px;
+  }
+
+  .detalles {
+    grid-template-columns: 1fr; /* Ficha técnica en una sola columna para móviles */
+  }
+}

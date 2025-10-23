@@ -1,0 +1,111 @@
+:root {
+  --azul: #083B70;
+  --naranja: #FF6A03;
+  --blanco: #fff;
+  --oscuro: #0b1f3a;
+}
+
+/* Estilos generales del panel */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f0f3fa;
+  min-height: 100vh;
+  color: #333;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background: var(--azul);
+  color: var(--blanco);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  position: fixed;
+  height: 100%;
+}
+.sidebar .logo img {
+  width: 60px;
+}
+.sidebar h2 {
+  font-size: 1.4rem;
+  margin-top: 10px;
+  color: var(--naranja);
+}
+.sidebar nav ul {
+  list-style: none;
+  width: 100%;
+  margin-top: 20px;
+}
+.sidebar nav ul li a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  color: #fff;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.sidebar nav ul li a:hover,
+.sidebar nav ul li a.active {
+  background: var(--naranja);
+  color: #111;
+}
+.logout {
+  border-top: 1px solid rgba(255,255,255,0.3);
+  margin-top: 20px;
+}
+
+/* Contenido principal */
+.main-content {
+  margin-left: 250px;
+  width: calc(100% - 250px);
+  background: #e9eef7;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header */
+.header {
+  background: var(--azul);
+  color: var(--blanco);
+  padding: 15px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header h1 {
+  font-size: 1.6rem;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 15px;
+  color: #555;
+  font-size: 0.9rem;
+  margin-top: auto;
+}
+
+/* === Ajuste de separación entre el header y los módulos === */
+.main-content {
+  padding-top: 80px; /* espacio para que el contenido no se pegue al header */
+}
+
+/* Asegura que el header se mantenga visible y no se superponga */
+.header {
+  position: fixed;
+  top: 0;
+  left: 250px; /* coincide con el ancho del sidebar */
+  width: calc(100% - 250px);
+  z-index: 10;
+}

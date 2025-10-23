@@ -1,0 +1,239 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f0f4f8, #d9e4f5);
+  margin: 0;
+  padding: 0;
+}
+
+.contacto {
+  padding: 70px 8px;
+  text-align: center;
+}
+
+.contacto h2 {
+  font-size: 2.5em;
+  color: #083B70;
+  margin-bottom: 15px;
+}
+
+.contacto .intro {
+  color: #555;
+  margin-bottom: 20px;
+  font-size: 1.1em;
+}
+
+.contenedor-contacto {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  background: #fff;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.637);
+  max-width: 950px;
+  margin: auto;
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+/* FORMULARIO */
+.formulario {
+  flex: 1;
+  min-width: 300px;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.formulario label {
+  font-weight: bold;
+  color: #083B70;
+  margin-bottom: 5px;
+}
+
+.formulario input,
+.formulario textarea {
+  padding: 14px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 1em;
+  transition: all 0.3s ease;
+}
+
+.formulario input:focus,
+.formulario textarea:focus {
+  border-color: #083B70;
+  box-shadow: 0 0 8px rgba(8,59,112,0.4);
+  outline: none;
+}
+
+.formulario button {
+  background: linear-gradient(135deg, #083B70, #0d4c9a);
+  color: #fff;
+  border: none;
+  padding: 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.formulario button:hover {
+  background: linear-gradient(135deg, #0d4c9a, #1877F2);
+  transform: scale(1.05);
+}
+
+/* INFO CONTACTO */
+.info-contacto {
+  flex: 1;
+  min-width: 250px;
+  text-align: left;
+}
+
+.info-contacto h3 {
+  color: #083B70;
+  margin-bottom: 20px;
+  font-size: 1.4em;
+}
+
+.info-contacto p {
+  margin: 12px 0;
+  font-size: 1.1em;
+  color: #444;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.info-contacto a {
+  color: #083B70;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.info-contacto a:hover {
+  color: #FF6A03;
+  text-decoration: underline;
+}
+
+/* REDES SOCIALES */
+.redes {
+  margin-top: 25px;
+  display: flex;
+  gap: 20px;
+}
+
+.redes a {
+  font-size: 2.5em;
+  color: #083B70;
+  margin: 0 12px;
+  position: relative;
+  transition: transform 0.3s, color 0.3s;
+  align-items: center;
+  justify-content: center;
+  width: 45px; height: 45px;       /* zona uniforme para todos */
+}
+
+.redes a i { line-height: 1; }
+
+.redes a:hover { 
+  transform: scale(1.4);
+}
+
+/* Tooltip refinado — más pequeño y estético */
+.redes a::after {
+  content: attr(data-tooltip);/* usar atributo personalizado */
+  position: absolute;/* posición absoluta respecto al enlace */
+  bottom: -28px; /* más cerca del ícono */
+  left: 50%;/* centrado horizontal */
+  transform: translateX(-50%);/* centrado exacto */
+  background: rgba(8, 59, 112, 0.85); /* más opaco pero discreto */
+  backdrop-filter: blur(3px); /* efecto cristal suave */
+  color: #fff;/* texto blanco */
+  padding: 4px 8px; /* menos espacio interno */
+  border-radius: 5px; /* bordes más suaves */
+  font-size: 0.3em; /* texto más pequeño */
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, bottom 0.25s ease;
+  z-index: 10;
+}
+
+.redes a:hover::after {
+  opacity: 1;
+  bottom: -35px; /* efecto sutil de aparición */
+}
+
+
+/* Colores oficiales en hover: aplicar SOLO al ícono (<i>) */
+.redes a.facebook:hover i { color: #1877F2; }
+
+.redes a.instagram:hover i {
+  background: radial-gradient(circle at 30% 107%,
+    #fdf497 0%, #fdf497 5%, #fd5949 45%,
+    #d6249f 60%, #285AEB 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;                 /* estándar */
+  -webkit-text-fill-color: transparent; /* webkit */
+}
+
+.redes a.tiktok:hover i {
+  color: #000;
+  text-shadow: -2px -2px 0 #25F4EE, 2px 2px 0 #FE2C55;
+}
+
+.redes a.whatsapp:hover i { color: #25D366; }
+
+/* Animación de entrada general (si la usas) */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .contenedor-contacto {
+    flex-direction: column;
+    padding: 25px;
+  }
+
+  .formulario, .info-contacto {
+    max-width: 100%;
+  }
+
+  .redes {
+    justify-content: center;
+  }
+}
+
+/*móviles */
+/* En móviles: sin tooltip, íconos centrados y proporcionales */
+@media (max-width: 600px) {
+  .redes a::after {
+    display: none; /* elimina el cartelito en móvil */
+  }
+
+  .redes {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+
+  .redes a {
+    font-size: 2rem; /* íconos más pequeños */
+    width: 40px;
+    height: 40px;
+  }
+
+  .info-contacto {
+    text-align: center;
+  }
+}
+

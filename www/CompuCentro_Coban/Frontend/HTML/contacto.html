@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto - CompuCentro</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="../IMG/logo_compucentr.png" type="image/png">
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="../CSS/style.css">
+  <link rel="stylesheet" href="../CSS/contacto.css">
+
+  <!-- Íconos de redes -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      <img src="../IMG/logo_compucentr.png" alt="Logo CompuCentro" class="logo-img">
+      <span class="brand"><b>Compu</b><span class="color-naranja">Centro</span></span>
+    </div>
+    <nav id="nav">
+      <ul>
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="cursos.php">Cursos</a></li>
+        <li><a href="convocatorias.html">Convocatorias</a></li>
+        <li><a href="preinscripcion.html">Preinscríbete</a></li>
+        <li><a href="galeria.html">Galería</a></li>
+        <li><a href="contacto.html" class="active">Contacto</a></li>
+      </ul>
+    </nav>
+    <div class="menu-toggle" id="menu-toggle">☰</div>
+  </header>
+
+  <!-- SECCIÓN CONTACTO -->
+  <section class="contacto">
+    <h2>Contáctanos</h2>
+    <p class="intro">Estamos aquí para ayudarte. Escríbenos o conéctate con nosotros en nuestras redes sociales.</p>
+
+    <div class="contenedor-contacto">
+      
+      <!-- FORMULARIO -->
+      <form id="form-contacto" class="formulario" action="../../Backend/src/PHP/enviar_contacto.php" method="POST" autocomplete="off">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required>
+
+        <label for="correo">Correo electrónico:</label>
+        <input type="email" id="correo" name="correo" placeholder="tuemail@ejemplo.com" required>
+
+        <label for="mensaje">Mensaje:</label>
+        <textarea id="mensaje" name="mensaje" rows="5" placeholder="Escribe tu mensaje..." required></textarea>
+
+        <button type="submit">Enviar Mensaje</button>
+      </form>
+
+      <!-- INFORMACIÓN DE CONTACTO -->
+      <div class="info-contacto">
+        <h3>Información de contacto</h3>
+        <p>
+          <i class="fa-solid fa-phone"></i>
+          <a href="tel:+50246504401">+502 4650 4401</a>
+        </p>
+        <p>
+          <i class="fa-solid fa-envelope"></i>
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=compucentrocoban@gmail.com" target="_blank">
+            compucentrocoban@gmail.com
+          </a>
+        </p>
+
+        <!-- REDES SOCIALES -->
+        <div class="redes">
+          <a href="https://www.facebook.com/compucentro.coban" target="_blank" class="facebook" data-tooltip="Compucentro Cobán">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="https://www.instagram.com/compucentrocoban" target="_blank" class="instagram" data-tooltip="Compucentro Cobán">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.tiktok.com/@compucentro.coban?_t=ZM-90Nh1xRdrp6&_r=1" target="_blank" class="tiktok" data-tooltip="@compucentro.coban">
+            <i class="fab fa-tiktok"></i>
+          </a>
+          <a href="https://wa.me/50246504401" target="_blank" class="whatsapp" data-tooltip="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer-elegante">
+    <div class="onda-superior">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 150">
+        <path fill="#063b70" d="M0,64L60,74.7C120,85,240,107,360,117.3C480,128,600,128,720,122.7C840,117,960,107,1080,101.3C1200,96,1320,96,1380,96L1440,96L1440,0L0,0Z"></path>
+      </svg>
+    </div>
+
+    <div class="contenido-footer">
+      <h3>Contáctanos</h3>
+      <p><i class="fa fa-phone"></i> +502 4650 4401</p>
+      <p><i class="fa fa-envelope"></i> compucentrocoban@gmail.com</p>
+    </div>
+
+    <div class="copyright">
+      <p>&copy; 2025 CompuCentro Cobán | Todos los derechos reservados</p>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="../JS/layout.js"></script>
+  <script src="../JS/contacto.js"></script>
+</body>
+</html>

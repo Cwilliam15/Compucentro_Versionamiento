@@ -1,0 +1,316 @@
+/* ===== ESTILOS GENERALES ===== */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #b9cdeb, #c5d8f0, #91b8e7, #e8f0fa);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ===== DISTRIBUCIÓN LATERAL ===== */
+.preinscripcion-layout {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 70px;
+  flex-wrap: wrap;
+  padding: 90px 60px 120px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+/* ===== DISTRIBUCIÓN GENERAL ===== */
+.preinscripcion-layout {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 60px;
+  flex-wrap: wrap;
+  padding: 90px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  transform: translateX(-40px); /* mueve todo el conjunto un poco a la izquierda */
+}
+
+/* ===== DESCRIPCIÓN IZQUIERDA — versión con “vida” ===== */
+.descripcion-lateral {
+  flex: 1;
+  max-width: 460px;
+  color: #083B70;
+  font-size: 1.05rem;
+  line-height: 1.85;
+  text-align: justify;
+  margin-top: 15px;
+  transform: translateX(-25px); /* mueve solo la descripción más a la izquierda */
+  animation: fadeInLeft 1s ease;
+}
+
+.descripcion-lateral h2 {
+  font-size: 2rem;
+  color: #083B70;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 0.4px;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.descripcion-lateral h2 span {
+  display: block;
+  margin-top: 3px;
+  color: #083B70;
+}
+
+.descripcion-lateral i {
+  color: #FF6A03;
+  margin-right: 10px;
+  font-size: 1.4rem;
+  vertical-align: middle;
+}
+
+.descripcion-lateral p {
+  color: #2f3a4d;
+  margin-top: 12px;
+  font-size: 1.07rem;
+  text-align: justify;
+}
+
+/* ===== FORMULARIO ===== */
+.form-container {
+  flex: 1.3;
+  min-width: 650px;
+  background: #ffffff;
+  padding: 50px 55px;
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  animation: fadeInRight 1s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* ===== ANIMACIONES ===== */
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-60px); }
+  to { opacity: 1; transform: translateX(-25px); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(60px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+
+
+
+
+/* ===== BORDE ANIMADO ===== */
+.form-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  padding: 2px;
+  background: linear-gradient(120deg, #083B70, #FF6A03, #0a4a9e, #083B70);
+  background-size: 400%;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: glowing-border 6s linear infinite;
+}
+
+@keyframes glowing-border {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ===== TÍTULO ===== */
+h2 {
+  text-align: center;
+  color: #083B70;
+  margin: 10px 0 30px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+h2 i {
+  color: #FF6A03;
+  margin-right: 8px;
+}
+
+/* ===== FIELDSETS ===== */
+fieldset {
+  border: none;
+  margin-bottom: 25px;
+  padding: 0;
+}
+
+legend {
+  font-weight: 700;
+  color: #083B70;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+}
+
+/* ===== ETIQUETAS FLOTANTES ===== */
+.input-group {
+  position: relative;
+  margin-top: 22px;
+}
+
+.input-group input,
+.input-group select {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1.5px solid #ccc;
+  outline: none;
+  font-size: 0.95rem;
+  background: #f8f9fb;
+  transition: all 0.3s ease;
+}
+
+.input-group label {
+  position: absolute;
+  top: 13px;
+  left: 14px;
+  color: #666;
+  pointer-events: none;
+  background: #fff;
+  padding: 0 6px;
+  transition: 0.25s ease;
+  font-size: 0.9rem;
+}
+
+/* ===== EFECTO FLOTANTE ===== */
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label,
+.input-group select:focus + label,
+.input-group select:not([value=""]) + label {
+  top: -8px;
+  left: 10px;
+  color: #083B70;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+  border-color: #083B70;
+  box-shadow: 0 0 8px rgba(8, 59, 112, 0.4);
+  background: #fff;
+}
+
+/* ===== CAMPOS EN DOS COLUMNAS ===== */
+.input-row {
+  display: flex;
+  gap: 15px;
+}
+
+.input-row .input-group {
+  flex: 1;
+}
+
+@media (max-width: 700px) {
+  .input-row {
+    flex-direction: column;
+  }
+}
+
+/* ===== BOTONES ===== */
+.botones {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+button {
+  flex: 1;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.4s ease;
+}
+
+/* ===== BOTÓN ENVIAR ===== */
+.enviar {
+  position: relative;
+  background: linear-gradient(135deg, #083B70, #0a4a9e);
+  color: white;
+  overflow: hidden;
+}
+
+.enviar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+  transition: 0.5s;
+}
+
+.enviar:hover::before {
+  left: 100%;
+}
+
+.enviar:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(8, 59, 112, 0.4);
+}
+
+/* ===== BOTÓN CANCELAR ===== */
+.cancelar {
+  background: #ddd;
+  color: #333;
+}
+
+.cancelar:hover {
+  background: #bbb;
+  transform: translateY(-3px);
+}
+
+/* ===== ANIMACIÓN GENERAL ===== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 992px) {
+  .preinscripcion-layout {
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 30px;
+  }
+
+  .descripcion-lateral {
+    text-align: center;
+    max-width: 700px;
+    padding-top: 0;
+  }
+
+  .form-container {
+    min-width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .form-container {
+    padding: 25px 20px;
+  }
+  h2 {
+    font-size: 1.3rem;
+  }
+}

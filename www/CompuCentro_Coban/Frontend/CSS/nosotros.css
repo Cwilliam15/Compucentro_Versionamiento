@@ -1,0 +1,589 @@
+/* ================= VARIABLES ================= */
+:root {
+  --azul: #083B70;
+  --celeste: #287CC0;
+  --naranja: #FF6A03;
+  --gris-fondo: #ECE5DD;
+  --sombra-azul: 0 6px 20px rgba(8, 59, 112, 0.25);
+  --fuente-base: 'Segoe UI', sans-serif;
+}
+
+/* ================= RESET Y BASE ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--fuente-base);
+  background-color: var(--gris-fondo);
+  color: #000000;
+  line-height: 1.6;
+}
+
+@keyframes fadeBody {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ================= HERO ================= */
+.hero {
+  background: linear-gradient(rgba(8, 58, 112, 0.33), rgba(8, 58, 112, 0.33)),
+  url("../IMG/CURSOS/IMG_9627.JPG") center/cover no-repeat;
+  min-height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  background-attachment:scroll;
+}
+
+.hero::before {
+  content: "";
+  background: inherit;
+  position: absolute;
+  inset: 0;
+  transition: transform 1.5s ease;
+  z-index: 0;
+  will-change: transform;
+}
+
+.hero:hover::before {
+  transform: scale(1.1);
+}
+
+.hero-contenido {
+  z-index: 2;
+  animation: aparecerHero 1.3s ease-out;
+}
+
+@keyframes aparecerHero {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero h1 {
+  font-size: 3em;
+  letter-spacing: 1px;
+}
+
+.hero h1 span {
+  color: var(--naranja);
+}
+
+.hero p {
+  font-size: 1.2em;
+  margin-top: 10px;
+  color: var(--gris-fondo);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4); /* mejora de contraste */
+}
+
+/* ================= MISIÓN & VISIÓN ================= */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  margin: 60px auto;
+  width: 90%;
+}
+
+.card {
+  background: #fff;
+  border-left: 6px solid var(--naranja);
+  border-radius: 15px;
+  padding: 30px;
+  flex: 1;
+  min-width: 300px;
+  text-align: center;
+  box-shadow: var(--sombra-azul);
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(255, 106, 3, 0.4);
+}
+
+.card h2 {
+  color: var(--azul);
+  margin-bottom: 15px;
+  font-size: 2em;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.card p {
+  color: #000000;
+  font-size: 1.2em;
+  text-align: justify;
+}
+
+/* ================= VALORES ================= */
+.valores {
+  background: linear-gradient(135deg, var(--celeste), var(--azul));
+  color: #fff;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.valores h2 {
+  margin-bottom: 25px;
+  font-size: 2em;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.grid-valores {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+/* ================= EFECTO INTERACTIVO DE VALORES ================= */
+.valor {
+  background: #fff;
+  color: var(--azul);
+  width: 190px;
+  height: 180px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  box-shadow: var(--sombra-azul);
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+/* Ícono */
+.valor i {
+  font-size: 1.6rem;
+  color: var(--naranja);
+  margin-bottom: 8px;
+}
+
+/* Cuando el valor aparece en pantalla */
+.valor.visible {
+  opacity: 1;
+  transform: translateY(0);
+  animation: flotar 0.8s ease forwards, glow 1.2s ease-in-out;
+}
+
+/*Animación tipo "flotar" */
+@keyframes flotar {
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(-10px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/*Brillo que aparece y se desvanece */
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 0 rgba(255, 106, 3, 0);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(3, 28, 255, 0.8);
+  }
+  100% {
+    box-shadow: var(--sombra-azul);
+  }
+}
+
+/* Hover con efecto de elevación */
+.valor:hover {
+  background: var(--naranja);
+  color: #fff;
+  transform: scale(1.08);
+  box-shadow: 0 8px 25px rgba(255, 106, 3, 0.6);
+}
+
+.valor:hover i {
+  color: #fff;
+}
+
+/* ================= HISTORIA ================= */
+.historia {
+  width: 90%;
+  margin: 50px auto;
+  padding: 40px;
+  background: linear-gradient(135deg, #9d9cee9a, #eef3ff);
+  border-radius: 15px;
+  box-shadow: var(--sombra-azul);
+  transition: transform 0.3s ease;
+}
+
+.historia:hover {
+  transform: translateY(-5px);
+}
+
+/* Encabezado */
+.historia h2 {
+  margin-bottom: 20px;
+  color: var(--azul);
+  position: relative;
+  display: inline-block;
+  font-size: 2em;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-align: center;
+  width: 100%;
+}
+
+.historia h2::after {
+  content: "";
+  width: 100px;
+  height: 4px;
+  background: var(--naranja);
+  display: block;
+  margin: 8px auto 0;
+  border-radius: 2px;
+}
+
+/* Contenedor general */
+.historia-contenido {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+/* Texto */
+.historia .texto {
+  flex: 1;
+  text-align: justify;
+  animation: fadeUp 1s ease forwards;
+  animation-delay: 0.4s;
+}
+
+.historia .texto p {
+  margin-bottom: 15px;
+  color: #000000;
+  line-height: 1.8;
+  font-size: 1.2em;
+}
+
+/* Imagen */
+.historia .imagen {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.historia .imagen img {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 12px;
+  box-shadow: var(--sombra-azul);
+  transition: transform 0.4s ease;
+}
+
+.historia .imagen img:hover {
+  transform: scale(1.05);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .historia-contenido {
+    flex-direction: column;
+    align-items: center;
+    text-align: justify;
+  }
+
+  .historia .imagen img {
+    max-width: 95%;
+    margin-top: 15px;
+  }
+
+  .historia .texto p {
+    font-size: 1em;
+  }
+}
+
+/* ================= EQUIPO ================= */
+.equipo {
+  background: linear-gradient(135deg, #9d9cee, #eef3ff);
+  padding: 50px 20px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.equipo h2 {
+  color: var(--azul);
+  font-size: 2em;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 30px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: aparecerTitulo 1s ease forwards;
+}
+
+@keyframes aparecerTitulo {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cards-equipo {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUpEquipo 1s ease forwards;
+  animation-delay: 0.4s;
+}
+
+@keyframes fadeUpEquipo {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Tarjeta del miembro */
+.miembro {
+  background: #cbcaca68;
+  border-radius: 15px;
+  padding: 20px;
+  width: 230px;
+  box-shadow: var(--sombra-azul);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efecto al pasar el mouse */
+.miembro:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(24, 3, 255, 0.4);
+}
+
+/* Imagen */
+.miembro img {
+  width: 100%;
+  border-radius: 50%;
+  filter: brightness(70%);
+  transition: all 0.4s ease;
+  margin-bottom: 28px; 
+}
+
+.miembro:hover img {
+  filter: brightness(100%);
+  transform: scale(1.05);
+}
+
+/*Oculta el nombre por defecto */
+.miembro h3 {
+  display: none;
+}
+
+/*Franja azul con el nombre */
+.miembro::after {
+  content: attr(data-rol);
+  position: absolute;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  background: var(--azul);
+  color: #fff;
+  font-size: 1em;
+  font-weight: 600;
+  padding: 12px 0;
+  opacity: 0;
+  transition: all 0.4s ease;
+  border-radius: 0 0 15px 15px;
+}
+
+/* Cuando pasa el mouse aparece la franja azul */
+.miembro:hover::after {
+  bottom: 0;
+  opacity: 1;
+  background: var(--azul);
+}
+
+/*Responsivo */
+@media (max-width: 768px) {
+  .cards-equipo {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .miembro {
+    width: 80%;
+    max-width: 320px;
+  }
+}
+
+/* ================= INSTALACIONES ================= */
+.instalaciones {
+  width: 90%;
+  margin: 60px auto;
+  text-align: center;
+}
+
+.instalaciones h2 {
+  color: var(--azul);
+  margin-bottom: 25px;
+  font-size: 2em;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.imagenes-instalaciones img {
+  width: 45%;
+  margin: 10px;
+  border-radius: 15px;
+  box-shadow: var(--sombra-azul);
+  cursor: pointer;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.imagenes-instalaciones img:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+/* ================= CONTACTO RÁPIDO ================= */
+.contacto-rapido {
+  background: linear-gradient(90deg, var(--azul), var(--celeste));
+  color: #fff;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.contacto-rapido h2 {
+  font-size: 2em;
+  margin-bottom: 25px;
+}
+
+.contacto-datos {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  font-size: 1.1em;
+}
+
+.contacto-datos a {
+  color: var(--naranja);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.contacto-datos a:hover {
+  color: #fff;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+  .cards { flex-direction: column; }
+  .imagenes-instalaciones img { width: 90%; }
+  .miembro { width: 80%; }
+}
+
+/*RESPONSIVE FINAL - MÓVILES */
+@media (max-width: 480px) {
+  html, body { width: 100%; overflow-x: hidden; }
+
+  /* HERO */
+  .hero { 
+    padding: 40px 15px; 
+    min-height: 50vh; 
+    background-position: center; 
+  }
+  .hero h1 { 
+    font-size: 1.8em; 
+    line-height: 1.3em; 
+  }
+  .hero p { 
+    font-size: 0.95em; 
+    line-height: 1.5em; 
+  }
+
+  /* MISIÓN Y VISIÓN */
+  .cards { 
+    width: 95%; 
+    gap: 25px; 
+    margin: 20px auto; 
+  }
+  .card {
+    width: 100%; 
+    max-width: 350px; 
+    padding: 25px 18px;
+    border-left: 5px solid var(--naranja); 
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(8, 59, 112, 0.2);
+  }
+  .card h2 { font-size: 1.5em; }
+  .card p { 
+    font-size: 0.95em; 
+    line-height: 1.6em; 
+    text-align: justify; 
+  }
+
+  /* VALORES */
+  .valor { 
+    width: 120px;
+    height: 120px; 
+    font-size: 0.9em; 
+  }
+
+  /* HISTORIA */
+  .historia { width: 92%; padding: 25px; }
+  .historia h2 { font-size: 1.6em; }
+  .historia .texto p { font-size: 0.9em; line-height: 1.6em; }
+
+  /* EQUIPO */
+  .miembro { width: 85%; max-width: 320px; }
+
+  /* INSTALACIONES */
+  .imagenes-instalaciones img { width: 95%; margin: 6px 0; }
+
+  /* CONTACTO */
+  .contacto-rapido { padding: 40px 10px; }
+  .contacto-datos { flex-direction: column; font-size: 1em; gap: 8px; }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease-out;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+

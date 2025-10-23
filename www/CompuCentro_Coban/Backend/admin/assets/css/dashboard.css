@@ -1,0 +1,32 @@
+.resumen {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 15px;
+  padding: 25px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+  color: var(--azul);
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 1.2rem;
+  color: var(--naranja);
+}
+
+.charts {
+  background: #fff;
+  margin: 20px;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}

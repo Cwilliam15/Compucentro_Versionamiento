@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CompuCentro Cobán</title>
+    <!-- Favicon (icono en la pestaña del navegador) -->
+  <link rel="icon" href="IMG/logo_compucentr.png" type="image/png">
+  <link rel="stylesheet" href="CSS/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- AOS (animaciones) -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      <img src="IMG/logo_compucentr.png" alt="Logo CompuCentro" class="logo-img">
+      <span class="brand"><b>Compu</b><span class="color-naranja">Centro</span> <span class="brand"><b>Cobán</b></span></span>
+    </div>
+    <nav id="nav">
+      <ul>
+        <li><a href="index.html" class="active">Inicio</a></li>
+        <li><a href="HTML/nosotros.html">Nosotros</a></li>
+        <li><a href="HTML/cursos.php">Cursos</a></li>
+        <li><a href="HTML/convocatorias.html">Convocatorias</a></li>
+        <li><a href="HTML/preinscripcion.html">Preinscríbete</a></li>
+        <li><a href="HTML/galeria.html">Galería</a></li>
+        <li><a href="HTML/contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+    <div class="menu-toggle" id="menu-toggle">☰</div>
+  </header>
+
+  <!-- CARRUSEL -->
+<section class="hero-carrusel">
+  <div class="slide">
+    <img src="IMG/aa.jpg" alt="Graduación">
+    <div class="overlay"></div>
+    <div class="texto-slide">
+      <h1>Estudia y aprende para estar al día en el mundo de la tecnología.</h1>
+      <p>Cursos diseñados para ti</p>
+    </div>
+  </div>
+
+  <div class="slide">
+    <img src="IMG/computadoras.jpg" alt="Clases en acción">
+    <div class="overlay"></div>
+    <div class="texto-slide">
+      <h1>CompuCentro Cobán</h1>
+      <p>Formando líderes en tecnología</p>
+    </div>
+  </div>
+
+  <div class="slide">
+    <img src="IMG/FA.jpg" alt="Laboratorio">
+    <div class="overlay"></div>
+    <div class="texto-slide">
+      <h1>CompuCentro Cobán</h1>
+      <p>Aprendizaje práctico y actualizado</p>
+    </div>
+  </div>
+
+  <div class="slide">
+    <img src="IMG/compratit.jpg" alt="Compartir experiencias">
+    <div class="overlay"></div>
+    <div class="texto-slide">
+      <h1>CompuCentro Cobán</h1>
+      <p>Tu futuro comienza aquí</p>
+    </div>
+  </div>
+
+  <!-- Botón fijo -->
+  <div class="boton-fijo">
+    <a href="HTML/cursos.php" class="btn-cta">Ver Cursos</a>
+  </div>
+
+  <!-- Flechas de navegación -->
+  <div class="flecha flecha-izq">&#10094;</div>
+  <div class="flecha flecha-der">&#10095;</div>
+
+  <!-- Puntos de navegación -->
+<div class="puntos"></div>
+</section><!-- FIN CARRUSEL -->
+
+<!-- CURSOS DESTACADOS -->
+<section class="cursos-inicio" data-aos="fade-up">
+  <h2>Cursos Destacados</h2>
+  <div class="cursos-grid">
+
+    <div class="curso-card" data-aos="zoom-in">
+      <img src="IMG/CURSOS/IMG-20250922-WA0046.jpg" alt="Curso 1">
+      <h3>Técnico Operador en Computadoras</h3>
+      <p>Utiliza correctamente las herramientas del sistema operativo, ofimática e internet.</p>
+      <a href="HTML/cursos.php" class="btn-curso">Ver más</a>
+    </div>
+
+    <div class="curso-card" data-aos="zoom-in" data-aos-delay="200">
+      <img src="IMG/CURSOS/IMG_9634.JPG" alt="Curso 2">
+      <h3>Técnico en Mantenimiento y Reparación de computadoras</h3>
+      <p>Utiliza sus habilidades y conocimientos para la reparación y mantenimiento de equipos de cómputo.</p>
+      <a href="HTML/cursos.php" class="btn-curso">Ver más</a>
+    </div>
+
+    <div class="curso-card" data-aos="zoom-in" data-aos-delay="400">
+      <img src="IMG/CURSOS/IMG_9655.JPG" alt="Curso 3">
+      <h3>Técnico en diseño gráfico</h3>
+      <p>Representa gráficamente a través de programas de diseño, cualquier pensamiento y lo transmite utilizando medios audiovisuales.</p>
+      <a href="HTML/cursos.php" class="btn-curso">Ver más</a>
+    </div>
+  </div>
+</section>
+
+  <!-- TESTIMONIOS -->
+<section class="testimonios">
+  <h2>Lo que dicen nuestros estudiantes</h2>
+  <div class="testimonios-grid">
+    <div class="video-testimonio" data-aos="fade-right">
+    <video controls>
+      <source src="VIDEOS/testimonio3.mp4" type="video/mp4">
+        Tu navegador no soporta el video.
+    </video>
+
+    </div>
+    <div class="video-testimonio" data-aos="fade-left">
+     <video controls>
+      <source src="VIDEOS/testimonio2.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+     </video>
+    </div>
+  </div>
+</section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-final">
+    <h2>¿Listo para transformar tu futuro?</h2>
+    <a href="HTML/preinscripcion.html" class="btn-cta">¡Preinscríbete ahora!</a>
+  </section>
+
+<!-- FOOTER -->
+<footer class="footer-elegante">
+ <div class="onda-superior">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 150">
+    <path fill="#063b70"
+      d="M0,64L60,74.7C120,85,240,107,360,117.3C480,128,600,128,720,122.7C840,117,960,107,1080,101.3C1200,96,1320,96,1380,96L1440,96L1440,0L0,0Z">
+    </path>
+  </svg>
+</div>
+<div class="contenido-footer">
+  <h3>Contáctanos</h3>
+<p><i class="fa fa-phone"></i>+502 4650 4401</p>
+<p><i class="fa fa-envelope"></i> compucentrocoban@gmail.com</p>
+</div>
+  <div class="copyright">
+    <p>&copy; 2025 CompuCentro Cobán | Todos los derechos reservados</p>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="JS/main.js"></script>
+<script src="JS/layout.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1000, // duración de animaciones
+    once: true      // solo animar una vez
+  }); 
+</script>
+</body>
+</html>

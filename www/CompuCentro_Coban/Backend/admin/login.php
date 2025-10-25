@@ -13,7 +13,7 @@
     <?php if(isset($_SESSION['error'])): ?>
       <p class="error"><?= $_SESSION['error']; unset($_SESSION['error']); ?></p>
     <?php endif; ?>
-    <form action="procesar_login.php" method="POST">
+    <form action="src/procesar_login.php" method="POST">
       <div class="campo">
         <input type="email" name="correo" placeholder=" " required>
         <label>Correo institucional</label>

@@ -1,5 +1,5 @@
 <?php
-require 'config.php';
+require 'src/config.php';
 
 $nombre = 'Administrador';
 $correo = 'espvaneles@gmail.com';

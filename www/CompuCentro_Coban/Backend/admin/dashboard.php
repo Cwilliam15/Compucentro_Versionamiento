@@ -1,4 +1,4 @@
-<?php require 'auth.php'; ?>
+<?php require 'src/auth.php'; ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>

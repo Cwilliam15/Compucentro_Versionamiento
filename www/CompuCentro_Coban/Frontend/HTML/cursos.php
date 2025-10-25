@@ -1,21 +1,24 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-
-require_once '../Backend/admin/src/config.php';
-
-// Consulta completa: cursos + jornada + días
+require_once __DIR__ . '/../Backend/admin/src/conexiondb.php';
+// ==============================
+// CONSULTA ACTUALIZADA
+// ==============================
+// Agrupa jornadas, horarios y días desde las tablas nuevas
 $stmt = $pdo->query("
   SELECT 
-    c.*, 
-    j.nombre AS jornada, 
-    j.hora_inicio, 
-    j.hora_fin, 
-    o.dia_semana
+    c.*,
+    GROUP_CONCAT(DISTINCT j.nombre SEPARATOR ', ') AS jornadas,
+    GROUP_CONCAT(DISTINCT CONCAT(j.hora_inicio, ' - ', j.hora_fin) SEPARATOR ', ') AS horarios,
+    GROUP_CONCAT(DISTINCT d.nombre SEPARATOR ', ') AS dias
   FROM cursos c
   LEFT JOIN oferta_cursos o ON c.id_curso = o.id_curso
   LEFT JOIN jornadas j ON o.id_jornada = j.id_jornada
+  LEFT JOIN oferta_dias od ON o.id_oferta = od.id_oferta
+  LEFT JOIN dias d ON od.id_dia = d.id_dia
   WHERE c.estado = 'activo'
+  GROUP BY c.id_curso
   ORDER BY c.id_curso DESC
 ");
 
@@ -78,21 +81,20 @@ $cursos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                   <h4 class="subtitulo-curso"><?= htmlspecialchars($curso['subtitulo']); ?></h4>
                 <?php endif; ?>
 
-                <p><?= htmlspecialchars($curso['descripcion']); ?></p>
+                <p><?= nl2br(htmlspecialchars($curso['descripcion'])); ?></p>
 
                 <p class="detalles">
-                  <span><strong>Duración:</strong> <?= htmlspecialchars($curso['duracion']); ?></span><br>
-                  <span><strong>Modalidad:</strong> <?= htmlspecialchars($curso['modalidad']); ?></span><br>
+                  <span><strong>Duración:</strong> <?= htmlspecialchars($curso['duracion'] ?: 'Por definir'); ?></span><br>
+                  <span><strong>Modalidad:</strong> <?= htmlspecialchars($curso['modalidad'] ?: 'Presencial'); ?></span><br>
 
-                  <?php if (!empty($curso['jornada'])): ?>
-                    <span><strong>Jornada:</strong> 
-                      <?= htmlspecialchars($curso['jornada']); ?> 
-                      (<?= htmlspecialchars($curso['hora_inicio']); ?> - <?= htmlspecialchars($curso['hora_fin']); ?>)
-                    </span><br>
-                  <?php endif; ?>
-
-                  <?php if (!empty($curso['dia_semana'])): ?>
-                    <span><strong>Días:</strong> <?= htmlspecialchars($curso['dia_semana']); ?></span>
+                  <?php if (!empty($curso['jornadas'])): ?>
+                    <span><strong>Jornadas:</strong> <?= htmlspecialchars($curso['jornadas']); ?></span><br>
+                    <span><strong>Horarios:</strong> <?= htmlspecialchars($curso['horarios']); ?></span><br>
+                    <?php if (!empty($curso['dias'])): ?>
+                      <span><strong>Días:</strong> <?= htmlspecialchars($curso['dias']); ?></span>
+                    <?php endif; ?>
+                  <?php else: ?>
+                    <span><strong>Jornadas:</strong> Próximamente disponible</span>
                   <?php endif; ?>
                 </p>
 

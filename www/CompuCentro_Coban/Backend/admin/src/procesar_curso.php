@@ -1,5 +1,5 @@
 <?php
-require_once 'config.php';
+require_once __DIR__ . '/conexiondb.php';
 require_once 'auth.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -10,8 +10,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $duracion    = trim($_POST['duracion'] ?? '');
     $modalidad   = trim($_POST['modalidad'] ?? '');
     $estado      = $_POST['estado'] ?? 'activo';
-    $id_jornada  = !empty($_POST['id_jornada']) ? $_POST['id_jornada'] : null;
-    $dia_semana  = trim($_POST['dia_semana'] ?? '');
+
+    // 🔹 Jornadas y días seleccionados (ambos arrays)
+    $jornadas = !empty($_POST['id_jornada']) ? (array) $_POST['id_jornada'] : [];
+    $dias     = !empty($_POST['id_dia']) ? (array) $_POST['id_dia'] : [];
 
     if (empty($nombre) || empty($descripcion)) {
         echo "<script>alert('⚠️ El nombre y la descripción son obligatorios.'); window.history.back();</script>";
@@ -23,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $nombreArchivo = time() . '_' . basename($_FILES['imagen']['name']);
         $rutaDestino = __DIR__ . '/../assets/uploads/' . $nombreArchivo;
 
-        // Verificar que la carpeta exista
+        // Crear carpeta si no existe
         if (!is_dir(dirname($rutaDestino))) {
             mkdir(dirname($rutaDestino), 0777, true);
         }
@@ -34,23 +36,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 // --- Insertar curso principal ---
                 $stmt = $pdo->prepare("
-                    INSERT INTO Cursos (nombre, subtitulo, descripcion, imagen, duracion, modalidad, estado)
+                    INSERT INTO cursos (nombre, subtitulo, descripcion, imagen, duracion, modalidad, estado)
                     VALUES (?, ?, ?, ?, ?, ?, ?)
                 ");
                 $stmt->execute([$nombre, $subtitulo, $descripcion, $nombreArchivo, $duracion, $modalidad, $estado]);
-
                 $idCurso = $pdo->lastInsertId();
 
-                // --- Si hay jornada o días, insertarlos en oferta_cursos ---
-                if ($id_jornada || $dia_semana) {
+                // --- Insertar las combinaciones de jornadas y días ---
+                if (!empty($jornadas) && !empty($dias)) {
                     $stmtOferta = $pdo->prepare("
-                        INSERT INTO oferta_cursos (id_curso, id_jornada, dia_semana)
-                        VALUES (?, ?, ?)
+                        INSERT INTO oferta_cursos (id_curso, id_jornada)
+                        VALUES (?, ?)
                     ");
-                    $stmtOferta->execute([$idCurso, $id_jornada, $dia_semana]);
+                    $stmtDias = $pdo->prepare("
+                        INSERT INTO oferta_dias (id_oferta, id_dia)
+                        VALUES (?, ?)
+                    ");
+
+                    foreach ($jornadas as $idJornada) {
+                        // Crear una nueva oferta por jornada
+                        $stmtOferta->execute([$idCurso, $idJornada]);
+                        $idOferta = $pdo->lastInsertId();
+
+                        // Relacionar los días seleccionados con esa oferta
+                        foreach ($dias as $idDia) {
+                            $stmtDias->execute([$idOferta, $idDia]);
+                        }
+                    }
                 }
 
-                // --- Confirmar cambios ---
                 $pdo->commit();
 
                 // --- Registrar log ---

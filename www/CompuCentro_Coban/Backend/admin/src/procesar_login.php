@@ -1,5 +1,5 @@
 <?php
-require 'config.php';
+require_once __DIR__ . '/conexiondb.php';
 session_start();
 
 $correo = $_POST['correo'] ?? '';
@@ -26,3 +26,5 @@ if ($usuario && password_verify($pass, $usuario['contrasena'])) {
     header("Location: ../login.php");
     exit;
 }
+
+?>

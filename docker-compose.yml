@@ -46,6 +46,7 @@ services:
       # Mapeo del Frontend y Backend
       - ./www/CompuCentro_Coban/Frontend:/var/www/html
       - ./www/CompuCentro_Coban/Backend:/var/www/html/Backend
+      - ./.env:/var/www/html/.env 
     depends_on:
       - db
     networks:

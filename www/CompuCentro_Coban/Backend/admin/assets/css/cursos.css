@@ -33,7 +33,7 @@
   gap: 10px;/* Espaciado entre campos */
 }
 /* Estilos para cada campo del formulario */
-.form-curso .campo label {
+.form-curso  {
   font-weight: bold;/* Negrita para etiquetas */
   color: #333;
 }
@@ -97,4 +97,66 @@
 
 .tabla-cursos tr:hover {
   background-color: #f2f6ff;
+}
+
+/* --- Bloque de Jornadas --- */
+.opciones-jornadas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 8px 20px;
+  margin-top: 8px;
+}
+
+.opciones-jornadas label {
+  display: flex;
+  justify-content: space-between; /* texto a la izquierda, checkbox a la derecha */
+  align-items: center;
+  color: #000000;
+  font-weight: normal; /* sin negrita */
+  cursor: pointer;
+  padding: 6px 10px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  transition: background 0.25s ease, border 0.25s ease;
+}
+
+.opciones-jornadas label:hover {
+  background: #f3f7ff;
+  border-color: #cddff8;
+}
+
+.opciones-jornadas input[type="checkbox"] {
+  accent-color: #FF6A03; /* color naranja institucional */
+  transform: scale(1.2);
+}
+
+/* --- Bloque de Días (igual estilo) --- */
+.opciones-dias {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 8px 20px;
+  margin-top: 8px;
+}
+
+.opciones-dias label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #000000;
+  font-weight: normal;
+  cursor: pointer;
+  padding: 6px 10px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  transition: background 0.25s ease, border 0.25s ease;
+}
+
+.opciones-dias label:hover {
+  background: #f3f7ff;
+  border-color: #cddff8;
+}
+
+.opciones-dias input[type="checkbox"] {
+  accent-color: #FF6A03;
+  transform: scale(1.2);
 }

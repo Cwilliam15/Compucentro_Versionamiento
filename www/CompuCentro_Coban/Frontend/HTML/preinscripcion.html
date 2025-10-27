@@ -12,6 +12,11 @@
 </head>
 
 <body>
+  <!-- MENSAJE DE CONFIRMACIÓN -->
+<div id="mensaje-exito" class="alerta-exito" style="display:none;">
+  ✅ Tu preinscripción ha sido enviada correctamente. Nos comunicaremos contigo pronto.
+</div>
+
   <!-- HEADER -->
   <header>
     <div class="logo">
@@ -25,7 +30,7 @@
         <li><a href="cursos.php">Cursos</a></li>
         <li><a href="convocatorias.html">Convocatorias</a></li>
         <li><a href="preinscripcion.html" class="active">Preinscríbete</a></li>
-        <li><a href="galeria.html">Galería</a></li>
+        <li><a href="galeria.php">Galería</a></li>
         <li><a href="contacto.html">Contacto</a></li>
       </ul>
     </nav>
@@ -164,7 +169,19 @@
       <p>&copy; 2025 CompuCentro Cobán | Todos los derechos reservados</p>
     </div>
   </footer>
-    
+    <script>
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('ok') === '1') {
+    const alerta = document.getElementById('mensaje-exito');
+    alerta.style.display = 'block';
+
+    // Ocultar el mensaje después de 5 segundos
+    setTimeout(() => {
+      alerta.style.display = 'none';
+    }, 5000);
+  }
+</script>
+
   <script src="../JS/layout.js"></script>
   <script src="../JS/preinscripcion.js"></script>
 </body>

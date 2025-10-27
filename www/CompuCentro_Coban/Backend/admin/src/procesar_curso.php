@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 require_once __DIR__ . '/conexiondb.php';
 require_once 'auth.php';
 
@@ -66,9 +69,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
 
                 $pdo->commit();
-
-                // --- Registrar log ---
-                registrar_log($pdo, $_SESSION['admin']['id_usuario'] ?? 1, 'Agregar curso', "Curso agregado: $nombre");
 
                 echo "<script>
                     alert('✅ Curso agregado correctamente.');

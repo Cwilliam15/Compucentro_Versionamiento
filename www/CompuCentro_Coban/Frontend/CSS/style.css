@@ -10,6 +10,26 @@ body {
   color: #333;
   background: #97b6f0ab;
 }
+.alerta-exito {
+  position: fixed;
+  top: 75px; /* Debajo del menú */
+  left: 50%;
+  transform: translateX(-50%);
+  background: #00c851;
+  color: white;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  z-index: 2000;
+  animation: fadein .6s;
+}
+
+@keyframes fadein {
+  from { opacity: 0; transform: translate(-50%, -10px); }
+  to   { opacity: 1; transform: translate(-50%, 0); }
+}
 
 /* ================================HEADER================================ */
 header {

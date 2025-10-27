@@ -1,0 +1,114 @@
+/* Contenedor principal */
+.content {
+    margin-left: 260px;
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: calc(100vh - 120px);
+    transition: margin-left 0.3s ease;
+}
+
+/* Tarjeta del formulario */
+.form-contenido {
+    background: #ffffff;
+    padding: 35px 40px;
+    border-radius: 14px;
+    width: 100%;
+    max-width: 1050px; /* 💙 MÁS ANCHO */
+    box-shadow: 0 5px 14px rgba(0,0,0,0.18);
+    animation: fadeIn 0.35s ease-in-out;
+}
+
+/* Título */
+.form-contenido h2 {
+    text-align: center;
+    color: #063b70;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+/* === GRID para Título y Descripción === */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Título más pequeño, descripción más amplia */
+    gap: 25px;
+}
+
+/* Labels */
+.form-contenido label {
+    font-weight: 600;
+    color: #063b70;
+    margin-bottom: 6px;
+    display: block;
+}
+
+/* Inputs y Textareas */
+.form-contenido input[type="text"],
+.form-contenido textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 10px;
+    border: 1px solid #b9c3d7;
+    font-size: 16px;
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.2s;
+    background: #fff;
+}
+
+.form-contenido input[type="text"]:focus,
+.form-contenido textarea:focus {
+    border-color: #0077ff;
+}
+
+/* Imagen previa */
+.preview-edit {
+    width: 260px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.30);
+    margin-top: 15px;
+}
+
+/* Botones centrados */
+.botones-acciones {
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+/* Botón Guardar */
+.btn-guardar {
+    background: #0077ff;
+    border: none;
+    color: white;
+    padding: 10px 26px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 17px;
+    transition: background .2s;
+}
+
+.btn-guardar:hover {
+    background: #005fcc;
+}
+
+/* Botón Cancelar */
+.btn-cancelar {
+    color: #cc0000;
+    font-size: 17px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-cancelar:hover {
+    text-decoration: underline;
+}
+
+/* Animación */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+

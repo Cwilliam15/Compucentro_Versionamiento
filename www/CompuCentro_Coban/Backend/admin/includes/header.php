@@ -25,6 +25,6 @@
 <header class="header">
   <h1>Panel Administrativo</h1>
   <div class="user-info">
-    <span>Hola, <?= htmlspecialchars($_SESSION['admin']['nombre']); ?></span>
+    <span>Hola, <?= htmlspecialchars($_SESSION['admin']['nombre'] ?? "Usuario") ?></span>
   </div>
 </header>
